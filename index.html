@@ -46,7 +46,7 @@
             <span class="call-info__time">Мы работаем с 8:30 до 23:00</span>
           </div>
           <div class="place-call__block">
-            <span class="main__btn header__btn btn">Заказать звонок</span>
+            <span class="main__btn header__btn btn modal-feedback__btn-show">Заказать звонок</span>
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@
             <span class="call-info__time">Мы работаем с 8:30 до 23:00</span>
           </div>
           <div class="place-call__block">
-            <span class="main__btn header__btn btn">Заказать звонок</span>
+            <span class="main__btn header__btn btn modal-feedback__btn-show">Заказать звонок</span>
           </div>
         </div>
       </div>
@@ -252,7 +252,7 @@
               <span class="credit-description__list"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Фото прописки</span>
               <span class="credit-description__list"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Фото страницы с отметкой о браке (если такая имеется)</span>
               <span class="credit-description__list"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>Фото страницы с отметкой о детях (если такая имеется)</span>
-              <span class="main__btn credit__btn btn">Узнать подробнее</span>
+              <span class="main__btn credit__btn btn modal-feedback__btn-show">Узнать подробнее</span>
             </div>
             <div class="card-img__col col">
               <div class="card-img__item">
@@ -434,10 +434,32 @@
   </div>
   <!-- End Page -->
 
+  <!-- Feedback Request Modal -->
+  <div class="feedback-request__modal modal__wrapper">
+    <div class="feedback-request__body">
+      <div class="modal-btn feedback-request__close-btn">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </div>
+      <h3 class="feedback-request__title title">Закажите звонок или позвоните нам</h3>
+      <span>Ваш личный менеджер, Сергей</span>
+      <a href="tel:+375255228110">+375 (25) 522-81-10</a>
+      <form class="order-form" action="./mail-telegram.php" method="POST">
+        <input type="hidden" name="utm_source" value="">
+        <input type="hidden" name="utm_medium" value="">
+        <input type="hidden" name="utm_campaign" value="">
+        <input type="hidden" name="utm_content" value="">
+        <input type="hidden" name="utm_term" value="">
+      
+        <input type="text" name="user_name" class="order-form__input" size="30" placeholder="Ваше имя..">
+        <input type="tel" name="user_name" class="order-form__input" placeholder="+375 (__) ___-__-__" required>
+        <button type="submit" class="order-form__btn">Получить консультацию</button>
+      </form>
+    </div>
+  </div>
   <!-- Legal-Info Modal -->
   <div class="legal-info__modal modal__wrapper">
     <div class="legal-info__body">
-      <div class="modal-btn">
+      <div class="modal-btn legal-info__close-btn">
         <i class="fa fa-times" aria-hidden="true"></i>
       </div>
       <span class="name-company">Общество с ограниченной ответственностью «ЗИКМЕС»</span>
@@ -466,7 +488,7 @@
     </div>
   </div>
   <!-- Phone to popUp -->
-  <div class="smart-phone__body">
+  <div class="smart-phone__body modal-feedback__btn-show">
     <span class="smartphone__screen">
       <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
     </span>

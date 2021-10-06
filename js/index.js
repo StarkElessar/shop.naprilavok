@@ -58,7 +58,7 @@ anchors.forEach((anchor) => {
 });
 
 const modalLegalInfo = document.querySelector('.legal-info__modal');
-const modalCloseBtn = document.querySelector('.modal-btn');
+const closeBtnModalLegalInfo = document.querySelector('.legal-info__close-btn');
 const modalShowBtn = document.querySelector('.legal-info__btn');
 const body = document.querySelector('body');
 
@@ -66,9 +66,22 @@ modalShowBtn.addEventListener('click', () => {
   modalLegalInfo.classList.add('show');
   body.classList.add('lock');
 });
-modalCloseBtn.addEventListener('click', () => {
+closeBtnModalLegalInfo.addEventListener('click', () => {
   modalLegalInfo.classList.remove('show');
   body.classList.remove('lock');
 });
 
+const modalFeedbackRequest = document.querySelector('.feedback-request__modal');
+const showModalFeedbackBtns = document.querySelectorAll('.modal-feedback__btn-show');
+const closeBtnModalFeedback = document.querySelector('.feedback-request__close-btn');
 
+showModalFeedbackBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    modalFeedbackRequest.classList.add('show');
+    body.classList.add('lock');
+  });
+});
+closeBtnModalFeedback.addEventListener('click', () => {
+  modalFeedbackRequest.classList.remove('show');
+  body.classList.remove('lock');
+});
