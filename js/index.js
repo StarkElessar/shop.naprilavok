@@ -82,32 +82,31 @@ const closeBtnModalFeedback = document.querySelector('.feedback-request__close-b
 showModalFeedbackBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     modalFeedbackRequest.classList.add('show');
-    bodyLock();
+    setBodyLock();
   });
 });
 closeBtnModalFeedback.addEventListener('click', () => {
   modalFeedbackRequest.classList.remove('show');
-  bodyUnLock();
+  setBodyUnLock();
   setTransition();
 });
 
-const bodyLock = () => {
-  const lockPaddingValue = window.innerWidth - document.querySelector('.page').offsetWidth + 'px';
-  const lockPaddingValueNumber = window.innerWidth - document.querySelector('.page').offsetWidth;
+const setBodyLock = () => {
+  const lockPaddingValue = window.innerWidth - document.querySelector('.page').offsetWidth;
 
 
   if (lockPadding.length > 0) {
     lockPadding.forEach((element) => {
-      element.style.paddingRight = lockPaddingValue;
+      element.style.paddingRight = `${lockPaddingValue}px`;
       element.style.transition = 'none';
     })
-    lockPosition.style.right = 40 + lockPaddingValueNumber + 'px';
-    body.style.paddingRight = lockPaddingValue;
+    lockPosition.style.right = 40 + lockPaddingValue + 'px';
+    body.style.paddingRight = `${lockPaddingValue}px`;
     body.classList.add('lock');
   }
 };
 
-const bodyUnLock = () => {
+const setBodyUnLock = () => {
   setTimeout(() => {
     lockPadding.forEach((element) => {
       element.style.paddingRight = '0px';
@@ -124,5 +123,5 @@ const setTransition = () => {
     lockPadding.forEach((element) => {
       element.style.transition = 'all 280ms ease 0ms';
     })
-  }, 600)
+  }, TIMEOUT + 500)
 }
