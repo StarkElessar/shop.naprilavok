@@ -23,9 +23,6 @@
   --standart-trans: all 280ms ease 0ms;
   --main-radius: 5px;
 }
-body {
-  transition: var(--standart-trans);
-}
 body.lock {
   overflow: hidden;
 }
@@ -947,8 +944,8 @@ section {
 /* Телефон для вызова главного popUp */
 .smart-phone__body {
   position: fixed;
-  bottom: 3%;
-  right: 3%;
+  bottom: 30px;
+  right: 40px;
   background-color: #fff;
   width: 65px;
   height: 100px;

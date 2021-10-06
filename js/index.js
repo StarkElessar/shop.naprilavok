@@ -57,18 +57,22 @@ anchors.forEach((anchor) => {
   });
 });
 
+const lockPadding = document.querySelectorAll('.lock-padding');
+const lockPosition = document.querySelector('.lock-position');
 const modalLegalInfo = document.querySelector('.legal-info__modal');
 const closeBtnModalLegalInfo = document.querySelector('.legal-info__close-btn');
 const modalShowBtn = document.querySelector('.legal-info__btn');
 const body = document.querySelector('body');
 
+const TIMEOUT = 280;
+
 modalShowBtn.addEventListener('click', () => {
   modalLegalInfo.classList.add('show');
-  body.classList.add('lock');
+  bodyLock();
 });
 closeBtnModalLegalInfo.addEventListener('click', () => {
   modalLegalInfo.classList.remove('show');
-  body.classList.remove('lock');
+  bodyUnLock();
 });
 
 const modalFeedbackRequest = document.querySelector('.feedback-request__modal');
@@ -78,10 +82,47 @@ const closeBtnModalFeedback = document.querySelector('.feedback-request__close-b
 showModalFeedbackBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     modalFeedbackRequest.classList.add('show');
-    body.classList.add('lock');
+    bodyLock();
   });
 });
 closeBtnModalFeedback.addEventListener('click', () => {
   modalFeedbackRequest.classList.remove('show');
-  body.classList.remove('lock');
+  bodyUnLock();
+  setTransition();
 });
+
+const bodyLock = () => {
+  const lockPaddingValue = window.innerWidth - document.querySelector('.page').offsetWidth + 'px';
+  const lockPaddingValueNumber = window.innerWidth - document.querySelector('.page').offsetWidth;
+
+
+  if (lockPadding.length > 0) {
+    lockPadding.forEach((element) => {
+      element.style.paddingRight = lockPaddingValue;
+      element.style.transition = 'none';
+    })
+    lockPosition.style.right = 40 + lockPaddingValueNumber + 'px';
+    body.style.paddingRight = lockPaddingValue;
+    body.classList.add('lock');
+  }
+};
+
+const bodyUnLock = () => {
+  setTimeout(() => {
+    lockPadding.forEach((element) => {
+      element.style.paddingRight = '0px';
+      element.style.transition = 'none';
+    })
+    lockPosition.style.right = '40px';
+    body.style.paddingRight = '0px';
+    body.classList.remove('lock');
+  }, TIMEOUT);
+};
+
+const setTransition = () => {
+  setTimeout(() => {
+    lockPadding.forEach((element) => {
+      element.style.transition = 'all 280ms ease 0ms';
+    })
+  }, 600)
+}
