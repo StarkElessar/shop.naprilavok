@@ -1,4 +1,4 @@
-const header = document.querySelector('header');
+const header = document.querySelector('#nav-header');
 
 window.addEventListener('scroll', () => {
   if (document.documentElement.scrollTop > 1000) {
