@@ -44,8 +44,8 @@ $(document).ready(function () {
 const anchors = document.querySelectorAll('a._link');
 
 anchors.forEach((anchor) => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault()
+  anchor.addEventListener('click', (event) => {
+    event.preventDefault();
 
     const blockID = anchor.getAttribute('href')
 
@@ -57,6 +57,7 @@ anchors.forEach((anchor) => {
   });
 });
 
+// Фикс дергания экрана при появлении Модального окна
 const lockPadding = document.querySelectorAll('.lock-padding');
 const lockPosition = document.querySelector('.lock-position');
 const modalLegalInfo = document.querySelector('.legal-info__modal');
@@ -118,6 +119,7 @@ const setBodyUnLock = () => {
   }, TIMEOUT);
 };
 
+// Возвращение свойства transition после закрытия модального окна
 const setTransition = () => {
   setTimeout(() => {
     lockPadding.forEach((element) => {
@@ -125,3 +127,30 @@ const setTransition = () => {
     })
   }, TIMEOUT + 500)
 }
+
+// Переход по ссылкам с применением класса active
+const navLinks = document.querySelectorAll('.nav__link');
+
+navLinks.forEach((link) => {
+  link.onclick = () => {
+    navLinks.forEach(activeLink => activeLink.classList.remove('active'));
+    link.classList.add('active');
+  }
+});
+
+// Установка класса active при скроле к секции
+const sectionCredit = document.querySelector('#credit');
+const positionCredit = sectionCredit.offsetTop;
+const heightSectionCredit = sectionCredit.clientHeight;
+const linkCredit = document.querySelector('._credit');
+
+console.log(positionCredit);
+console.log(heightSectionCredit);
+
+window.addEventListener('scroll', () => {
+  if (document.documentElement.scrollTop > positionCredit - 150) {
+    linkCredit.classList.add('active');
+  } if (document.documentElement.scrollTop > positionCredit + heightSectionCredit || document.documentElement.scrollTop < positionCredit) {
+    linkCredit.classList.remove('active');
+  }
+});
