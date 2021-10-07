@@ -95,7 +95,6 @@ closeBtnModalFeedback.addEventListener('click', () => {
 const setBodyLock = () => {
   const lockPaddingValue = window.innerWidth - document.querySelector('.page').offsetWidth;
 
-
   if (lockPadding.length > 0) {
     lockPadding.forEach((element) => {
       element.style.paddingRight = `${lockPaddingValue}px`;
@@ -109,10 +108,12 @@ const setBodyLock = () => {
 
 const setBodyUnLock = () => {
   setTimeout(() => {
-    lockPadding.forEach((element) => {
-      element.style.paddingRight = '0px';
-      element.style.transition = 'none';
-    })
+    if (lockPadding.length > 0) {
+      lockPadding.forEach((element) => {
+        element.style.paddingRight = '0px';
+        element.style.transition = 'none';
+      })
+    }
     lockPosition.style.right = '40px';
     body.style.paddingRight = '0px';
     body.classList.remove('lock');
@@ -152,5 +153,15 @@ window.addEventListener('scroll', () => {
     linkCredit.classList.add('active');
   } if (document.documentElement.scrollTop > positionCredit + heightSectionCredit || document.documentElement.scrollTop < positionCredit) {
     linkCredit.classList.remove('active');
+  }
+});
+
+// Аккордион
+const accordionItems = document.querySelectorAll('.accordion__item');
+
+accordionItems.forEach((accordionItem) => {
+  accordionItem.onclick = () => {
+    accordionItems.forEach((el) => el.classList.remove('active'));
+    accordionItem.classList.add('active');
   }
 });
