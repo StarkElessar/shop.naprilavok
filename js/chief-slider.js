@@ -76,8 +76,8 @@ function ChiefSlider(selector, config) {
   // configuration of the slider
   this._config = {
     loop: true,
-    autoplay: true,
-    interval: 9000,
+    autoplay: false,
+    interval: 5000,
     refresh: true,
     swipe: true,
   };
@@ -479,7 +479,7 @@ ChiefSlider.prototype._refresh = function () {
   }
 
   this._setActiveClass();
-
+  this._updateIndicators();
   window.requestAnimationFrame(
     function () {
       this._$items.classList.remove(SLIDER_TRANSITION_OFF);
@@ -502,7 +502,6 @@ ChiefSlider.prototype._refresh = function () {
   $itemList[count].style.transform = 'translateX('.concat(translate, '%)');
   // update values of extreme properties
   this.__refreshExtremeValues();
-  this._updateIndicators();
   // calling _autoplay
   this._autoplay();
 };

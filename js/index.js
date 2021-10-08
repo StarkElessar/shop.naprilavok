@@ -10,13 +10,14 @@ window.addEventListener('scroll', () => {
 
 // после готовности DOM инициализация Слайдера
 document.addEventListener('DOMContentLoaded', () => {
-  const sliders = document.querySelectorAll('.slider');
-  for (var i = 0, len = sliders.length; i < len; i++) {
-    // инициализация sliders[i] в качестве слайдера
-    new ChiefSlider(sliders[i], {
-      interval: 10000
-    });
-  };
+  new ChiefSlider('.certificate__slider', {
+    loop: true,
+    interval: 10000,
+  });
+  new ChiefSlider('.sale__slider', {
+    loop: false,
+    interval: 10000,
+  })
 });
 
 $(document).ready(function () {
@@ -139,26 +140,8 @@ navLinks.forEach((link) => {
   }
 });
 
-// Установка класса active при скроле к секции
-const sectionCredit = document.querySelector('#credit');
-const positionCredit = sectionCredit.offsetTop;
-const heightSectionCredit = sectionCredit.clientHeight;
-const linkCredit = document.querySelector('._credit');
-
-console.log(positionCredit);
-console.log(heightSectionCredit);
-
-window.addEventListener('scroll', () => {
-  if (document.documentElement.scrollTop > positionCredit - 150) {
-    linkCredit.classList.add('active');
-  } if (document.documentElement.scrollTop > positionCredit + heightSectionCredit || document.documentElement.scrollTop < positionCredit) {
-    linkCredit.classList.remove('active');
-  }
-});
-
-// Аккордион
+// Аккордеон
 const accordionItems = document.querySelectorAll('.accordion__item');
-
 accordionItems.forEach((accordionItem) => {
   accordionItem.onclick = () => {
     accordionItems.forEach((el) => el.classList.remove('active'));
